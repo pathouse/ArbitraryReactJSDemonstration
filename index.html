@@ -8,13 +8,24 @@
     <meta name="description" content="React JS Demo">
     <meta name="author" content="Pat McGee">
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <script src="/vendor/react.js"></script>
-    <script src="/vendor/JSXTransformer.js"></script>
-    <script src="/application.js.jsx" type="text/jsx"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="vendor/jquery-2.1.3.min.js"></script>
+    <script src="vendor/lodash.js"></script>
+    <script src="vendor/react.js"></script>
+    <script src="vendor/JSXTransformer.js"></script>
+    <script src="application.js.jsx" type="text/jsx"></script>
   </head>
 
   <body>
+    <script type="text/jsx">
+      $(document).ready(function() {
+        var props = { title: "The Mighty List of Arbitrariness" }
+        var mountPoint = document.getElementById('react-mount-point')
+        if (mountPoint) {
+          React.renderComponent(DasList(props), mountPoint)
+        }
+      })
+    </script>
     <div id="react-mount-point"></div>
   </body>
 </html>
