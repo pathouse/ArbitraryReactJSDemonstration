@@ -3,7 +3,7 @@
 var DasList = React.createClass({
 
   getInitialState: function() {
-    return { dasItems: [] }
+    return { dasItems: [], newItem: "" }
   },
 
   renderDasItems: function() {
@@ -15,6 +15,18 @@ var DasList = React.createClass({
     } else {
       return "No Items In Das List!"
     }
+  },
+
+  onNewItemChange: function(event) {
+    var newItem = event.target.value
+    this.setState({newItem: newItem})
+  },
+
+  onNewItemSubmit: function(event) {
+    if (event.keyCode !== 13) return
+    var dasItems = this.state.dasItems
+    dasItems = dasItems.concat(this.state.newItem)
+    this.setState({dasItems: dasItems, newItem: ""})
   },
 
   render: function() {
@@ -29,6 +41,15 @@ var DasList = React.createClass({
             <ul>
               { this.renderDasItems() }
             </ul>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-8 col-md-offset-2">
+            <label htmlFor="new_item">Type Something and Hit Enter!</label>
+            <input type="text" name="new_item"
+                   value={this.state.newItem}
+                   onChange={this.onNewItemChange}
+                   onKeyDown={this.onNewItemSubmit}/>
           </div>
         </div>
       </div>
